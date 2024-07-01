@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ListCurrencyComponent } from './list-currency.component';
+
+describe('CurrencyComponent', () => {
+  let component: ListCurrencyComponent;
+  let fixture: ComponentFixture<ListCurrencyComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ListCurrencyComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(ListCurrencyComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

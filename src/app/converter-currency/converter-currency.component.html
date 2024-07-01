@@ -1,0 +1,46 @@
+<div class="card m-3">
+    <h5 class="card-header">Converter currency</h5>
+        <div class="card-body">
+
+        <form>
+            <div class="row">
+                <div class="col-3 mb-2">
+                    <label class="form-label">From:</label>
+
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="fromCurrency" name="fromCurrency">
+
+                    <option *ngFor="let rate of exchangeRates" [value]="rate.code">{{ rate.code }}</option>
+
+                    </select>
+                </div>
+                <div class="col-3 mb-2">
+                    <label class="form-label">To:</label>
+                  
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="toCurrency" name="toCurrency">
+
+                    <option *ngFor="let rate of exchangeRates" [value]="rate.code">{{ rate.code }}</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 mb-2">
+                    <label class="form-label">Amount:</label>
+                   
+                        <input class="form-control" aria-label="default input example" type="number" [(ngModel)]="amount" name="amount">
+      
+                </div>
+            </div>
+            <div >
+                <button class="btn btn-primary" (click)="convertCurrency()">Convert</button>
+            </div>
+
+        </form>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <p readonly class="form-control-plaintext">Result: {{ result }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+        
