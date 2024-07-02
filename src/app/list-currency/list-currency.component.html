@@ -1,35 +1,39 @@
-  <div class="card m-3">
-    <h5 class="card-header">Search exchange-rates by date</h5>
-    <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="col-6 mb-3">
-                    <label class="form-label">Date start of exchange rates</label>
-                    <input type="date" formControlName="dateStart" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dateStart'].errors }" />
-                    <div *ngIf="submitted && f['dateStart'].errors" class="invalid-feedback">
-                        <div *ngIf="f['dateStart'].errors['required']">Date of exchange rates is required</div>
-                         <div *ngIf="f['dateStart'].errors.pattern">Date of exchange rates must be a valid date in the format YYYY-MM-DD</div>
+    <div class="card m-3">
+        <h5 class="card-header">Search exchange-rates by date</h5>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Date start of exchange rates</label>
+                        <input type="date" formControlName="dateStart" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dateStart'].errors }" />
+                        <div *ngIf="submitted && f['dateStart'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateStart'].errors['required']">Date of exchange rates is required</div>
+                            <div *ngIf="f['dateStart'].errors.pattern">Date of exchange rates must be a valid date in the format YYYY-MM-DD</div>
+                        </div>
+                        
+                            <div *ngIf="form.hasError('invalidDateRange')"><small class="text-danger">Invalid Date Range</small></div>
+                            <div *ngIf="form.hasError('toLargeTime')"><small class="text-danger">Too large a time frame</small></div>
+                        
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Date end of exchange rates</label>
+                        <input type="date" formControlName="dateEnd" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dateEnd'].errors }" />
+                        <div *ngIf="submitted && f['dateEnd'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateEnd'].errors['required']">Date of exchange rates is required</div>
+                            <div *ngIf="f['dateEnd'].errors.pattern">Date of exchange rates must be a valid date in the format YYYY-MM-DD</div>
+                        </div>  
                     </div>
                 </div>
-                <div class="col-6 mb-3">
-                    <label class="form-label">Date end of exchange rates</label>
-                    <input type="date" formControlName="dateEnd" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dateEnd'].errors }" />
-                    <div *ngIf="submitted && f['dateEnd'].errors" class="invalid-feedback">
-                        <div *ngIf="f['dateEnd'].errors['required']">Date of exchange rates is required</div>
-                         <div *ngIf="f['dateEnd'].errors.pattern">Date of exchange rates must be a valid date in the format YYYY-MM-DD</div>
-                    </div>
+                <div class="text-center">
+                    <button class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-secondary" type="reset" (click)="onReset()">Reset</button>
                 </div>
-            </div>
-            <div class="text-center">
-                <button class="btn btn-primary me-2">Submit</button>
-                <button class="btn btn-secondary" type="reset" (click)="onReset()">Reset</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
 
-<!-- <div class="table-responsive"> -->
+
     <div class="card m-3">   
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -49,8 +53,6 @@
                         </tr>
                     </ng-container>
                 </ng-container> 
-
             </tbody>
         </table>
-       
- </div>
+    </div>
